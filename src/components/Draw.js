@@ -3,9 +3,16 @@ import React from 'react'
 export default function Draw(props) {
     return (
         <>
-        <h2>The deck does here</h2>
+        {
+            props.deck.map(card => {
+                return (
+                    <h3 key={card.rank}>{card.keywords[0]}</h3>
+                )
+
+            })
+        }
         <form onSubmit={props.handleSubmit}>
-            <input type='button' className='btn' value='New Draw' />
+            <input type='submit' className='btn' value='New Draw' />
         </form>
         </>
     )
