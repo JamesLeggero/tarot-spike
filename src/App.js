@@ -17,10 +17,19 @@ function App() {
     event.preventDefault()
     
     try {
-      const draw = tarot.drawReading()
-      console.log(draw)
-      console.log('test')
+      const drawSet = new Set([])
+      while (drawSet.size < 3){
+        const card = tarot.drawCard()
+        if (card.suit === 'major') {
+
+          drawSet.add(card)
+        }
+      }
+      const draw = [...drawSet]
+      // console.log(draw[0].name)
+      // console.log('test')
       setDeck(draw)
+      console.log(deck)
       
     } catch (error) {
       console.error(error)

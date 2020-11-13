@@ -6,7 +6,17 @@ export default function Draw(props) {
         {
             props.deck.map(card => {
                 return (
-                    <h3 key={card.rank}>{card.keywords[0]}</h3>
+                    <div className='card' key={card.rank}>
+                    <h3>{card.name}</h3>
+                    {card.reversed === false?
+                    <h4 style={{color: 'green'}}>{card.meanings.light[
+                        Math.floor(Math.random() * card.meanings.light.length)
+                    ]}</h4> :
+                    <h4 style={{color: 'red'}}>{card.meanings.shadow[
+                        Math.floor(Math.random() * card.meanings.shadow.length)
+                    ]}</h4>
+                    }
+                    </div>
                 )
 
             })
