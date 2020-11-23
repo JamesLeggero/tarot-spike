@@ -6,7 +6,7 @@
 }
 
 body {
-  background-color: rgb(199, 182, 182);
+  background-color: black;
   margin: 0;
   /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -17,9 +17,20 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.drawContainer {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.cardContainer {
+  width: 200px;
+  margin: 25px;
+}
 .drawnCard {
   height: 250px;
-  color: blue
+  /* background-color: ghostwhite; */
+  filter: invert(75%);
 }
 
 code {

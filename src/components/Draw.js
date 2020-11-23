@@ -51,10 +51,14 @@ export default function Draw(props) {
 
     return (
         <>
+        <form onSubmit={props.handleSubmit}>
+            <input type='submit' className='btn' value='New Draw' />
+        </form>
+        <div className='drawContainer'>
         {
             props.deck.map(card => {
                 return (
-                    <div className='card' key={card.rank}>
+                    <div className='cardContainer' key={card.rank}>
                         {
                             card.reversed === false ?
                             <img className='drawnCard' src={tarot[card.rank]} alt={`${tarot[card.rank]}`} /> :
@@ -73,9 +77,8 @@ export default function Draw(props) {
 
             })
         }
-        <form onSubmit={props.handleSubmit}>
-            <input type='submit' className='btn' value='New Draw' />
-        </form>
+        </div>
+        
         </>
     )
 }
