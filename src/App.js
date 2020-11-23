@@ -40,7 +40,14 @@ function App() {
     <div className="App">
       <Welcome />
       <Draw handleSubmit={handleSubmit} deck={deck}/>
-      <Reading />
+      {/* <Reading /> */}
+      {/* {
+        tarot.majorArcana.map(card =>{
+          return (
+            console.log(card.rank, card.name)
+          )
+        })
+      } */}
       
     </div>
   );
