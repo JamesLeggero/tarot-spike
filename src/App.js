@@ -13,6 +13,12 @@ function App() {
 
   }, [deck])
 
+  const firstMeaning = [], 
+    secondMeaning = [], 
+    thirdMeaning = []
+
+  let draw = []
+
   const handleSubmit = event => {
     event.preventDefault()
     
@@ -25,11 +31,17 @@ function App() {
           drawSet.add(card)
         }
       }
-      const draw = [...drawSet]
-      // console.log(draw[0].name)
+      
+      draw = [...drawSet]
+      console.log(draw[0].name)
       // console.log('test')
       setDeck(draw)
-      console.log(deck)
+      for (let i = 0; i < 3; i++) {
+        // deck[i].reversed === false ?
+        // firstMeaning = deck[i].meanings.light[Math.floor(Math.random() * deck[i].meanings.light.length]
+        // console.log(deck[i].name)
+      }
+      // console.log(deck)
       
     } catch (error) {
       console.error(error)
@@ -40,11 +52,12 @@ function App() {
     <div className="App">
       <Welcome />
       <Draw handleSubmit={handleSubmit} deck={deck}/>
+      
       {/* <Reading /> */}
       {/* {
         tarot.majorArcana.map(card =>{
           return (
-            console.log(card.rank, card.name)
+            console.log(card)
           )
         })
       } */}

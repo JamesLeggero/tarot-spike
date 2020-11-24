@@ -49,12 +49,17 @@ export default function Draw(props) {
         world
     ]
 
+    const [ deck ] = props.deck
+
+    
+
     return (
         <>
         <form onSubmit={props.handleSubmit}>
             <input type='submit' className='btn' value='New Draw' />
         </form>
         <div className='drawContainer'>
+            
         {
             props.deck.map(card => {
                 return (
