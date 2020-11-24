@@ -13,34 +13,38 @@ function App() {
 
   }, [deck])
 
-  const firstMeaning = [], 
+  let firstMeaning = [], 
     secondMeaning = [], 
-    thirdMeaning = []
+    thirdMeaning = [],
+    draw = []
 
-  let draw = []
+  function assignMeaning (meaning, i) {
+    draw[i].reversed === false ?
+    meaning = draw[i].meanings.light[Math.floor(Math.random() * draw[i].meanings.light.length)] :
+    meaning = draw[i].meanings.shadow[Math.floor(Math.random() * draw[i].meanings.shadow.length)]
+    return meaning
+  }
 
   const handleSubmit = event => {
     event.preventDefault()
+    console.log(tarot.drawReading(5))
     
     try {
       const drawSet = new Set([])
-      while (drawSet.size < 3){
+      while (drawSet.size < 3) {
         const card = tarot.drawCard()
         if (card.suit === 'major') {
 
           drawSet.add(card)
         }
+        
       }
       
       draw = [...drawSet]
-      console.log(draw[0].name)
+      firstMeaning = assignMeaning(firstMeaning, 0)
+      console.log(firstMeaning)
       // console.log('test')
       setDeck(draw)
-      for (let i = 0; i < 3; i++) {
-        // deck[i].reversed === false ?
-        // firstMeaning = deck[i].meanings.light[Math.floor(Math.random() * deck[i].meanings.light.length]
-        // console.log(deck[i].name)
-      }
       // console.log(deck)
       
     } catch (error) {
@@ -51,7 +55,7 @@ function App() {
   return (
     <div className="App">
       <Welcome />
-      <Draw handleSubmit={handleSubmit} deck={deck}/>
+      <Draw handleSubmit={handleSubmit} deck={deck} firstMeaning={firstMeaning}/>
       
       {/* <Reading /> */}
       {/* {

@@ -69,19 +69,20 @@ export default function Draw(props) {
                             <img className='drawnCard' src={tarot[card.rank]} alt={`${tarot[card.rank]}`} /> :
                             <img className='drawnCard' style={{transform: 'rotate(0.5turn'}} src={tarot[card.rank]} alt={`${tarot[card.rank]}`} />
                         }
-                    {card.reversed === false?
+                    {/* {card.reversed === false?
                     <h4 style={{color: 'green'}}>{card.meanings.light[
                         Math.floor(Math.random() * card.meanings.light.length)
                     ]}</h4> :
                     <h4 style={{color: 'red'}}>{card.meanings.shadow[
                         Math.floor(Math.random() * card.meanings.shadow.length)
                     ]}</h4>
-                    }
+                    } */}
                     </div>
                 )
 
             })
         }
+        <h4>{props.firstMeaning}</h4>
         </div>
         
         </>
