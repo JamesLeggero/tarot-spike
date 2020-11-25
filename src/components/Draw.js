@@ -51,10 +51,11 @@ export default function Draw(props) {
         world
     ]
 
-    const [ deck ] = props.deck
+    // const [ deck ] = props.deck
 
-    let firstMeaning = '', secondMeaning = '', thirdMeaning = ''
+    let firstMeaning = '', secondMeaning = '', thirdMeaning = '', fortune = ''
     if (props.deck[0]) {
+        fortune = props.deck[0].fortune_telling[Math.floor(Math.random() * props.deck[0].fortune_telling.length)]
         if (props.deck[0].reversed === false) {
             firstMeaning = props.deck[0].meanings.light[0]
         } else {
@@ -78,10 +79,11 @@ export default function Draw(props) {
         }
     }
 
-    const allMeanings = `${firstMeaning} ${secondMeaning} ${thirdMeaning}`
+    const allMeanings = `${fortune} ${firstMeaning} ${secondMeaning} ${thirdMeaning}`
 
     let interpretation = new Sentiment()
-    const result = interpretation.analyze(firstMeaning).score + interpretation.analyze(secondMeaning).score + interpretation.analyze(thirdMeaning).score
+    // const result = interpretation.analyze(firstMeaning).score + interpretation.analyze(secondMeaning).score + interpretation.analyze(thirdMeaning).score
+    const result = interpretation.analyze(allMeanings)
         
 
    
@@ -104,14 +106,6 @@ export default function Draw(props) {
                             <img className='drawnCard' src={tarot[card.rank]} alt={`${tarot[card.rank]}`} /> :
                             <img className='drawnCard' style={{transform: 'rotate(0.5turn'}} src={tarot[card.rank]} alt={`${tarot[card.rank]}`} />
                         }
-                    {/* {card.reversed === false?
-                    <h4 style={{color: 'green'}}>{card.meanings.light[
-                        Math.floor(Math.random() * card.meanings.light.length)
-                    ]}</h4> :
-                    <h4 style={{color: 'red'}}>{card.meanings.shadow[
-                        Math.floor(Math.random() * card.meanings.shadow.length)
-                    ]}</h4>
-                    } */}
                     </div>
                 )
 
@@ -120,12 +114,14 @@ export default function Draw(props) {
         
         </div>
         {
-            console.log(props.deck[0])
+        Object.keys(props.deck).length > 0 && <h3 style={{color: 'blue'}}>{fortune}</h3>
         }
         <h4>{firstMeaning}</h4>
         <h4>{secondMeaning}</h4>
         <h4>{thirdMeaning}</h4>
-        {console.log(result)}
+        {
+        Object.keys(props.deck).length > 0 && console.log(result)
+        }
         
         </>
     )
