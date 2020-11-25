@@ -22,6 +22,8 @@ import tower from '../images/tower.png'
 import wheel from '../images/wheel.png'
 import world from '../images/world.png'
 
+const Sentiment = require('sentiment')
+
 export default function Draw(props) {
 
     const tarot = [
@@ -50,6 +52,39 @@ export default function Draw(props) {
     ]
 
     const [ deck ] = props.deck
+
+    let firstMeaning = '', secondMeaning = '', thirdMeaning = ''
+    if (props.deck[0]) {
+        if (props.deck[0].reversed === false) {
+            firstMeaning = props.deck[0].meanings.light[0]
+        } else {
+            firstMeaning = props.deck[0].meanings.shadow[0]
+        }
+    }
+
+    if (props.deck[1]) {
+        if (props.deck[1].reversed === false) {
+            secondMeaning = props.deck[1].meanings.light[1]
+        } else {
+            secondMeaning = props.deck[1].meanings.shadow[1]
+        }
+    }
+
+    if (props.deck[2]) {
+        if (props.deck[2].reversed === false) {
+            thirdMeaning = props.deck[2].meanings.light[2]
+        } else {
+            thirdMeaning = props.deck[2].meanings.shadow[2]
+        }
+    }
+
+    const allMeanings = `${firstMeaning} ${secondMeaning} ${thirdMeaning}`
+
+    let interpretation = new Sentiment()
+    const result = interpretation.analyze(firstMeaning).score + interpretation.analyze(secondMeaning).score + interpretation.analyze(thirdMeaning).score
+        
+
+   
 
     
 
@@ -82,8 +117,15 @@ export default function Draw(props) {
 
             })
         }
-        <h4>{props.firstMeaning}</h4>
+        
         </div>
+        {
+            console.log(props.deck[0])
+        }
+        <h4>{firstMeaning}</h4>
+        <h4>{secondMeaning}</h4>
+        <h4>{thirdMeaning}</h4>
+        {console.log(result)}
         
         </>
     )

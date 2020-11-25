@@ -13,10 +13,7 @@ function App() {
 
   }, [deck])
 
-  let firstMeaning = [], 
-    secondMeaning = [], 
-    thirdMeaning = [],
-    draw = []
+  let draw = []
 
   function assignMeaning (meaning, i) {
     draw[i].reversed === false ?
@@ -27,7 +24,7 @@ function App() {
 
   const handleSubmit = event => {
     event.preventDefault()
-    console.log(tarot.drawReading(5))
+    
     
     try {
       const drawSet = new Set([])
@@ -41,8 +38,7 @@ function App() {
       }
       
       draw = [...drawSet]
-      firstMeaning = assignMeaning(firstMeaning, 0)
-      console.log(firstMeaning)
+      
       // console.log('test')
       setDeck(draw)
       // console.log(deck)
@@ -55,7 +51,7 @@ function App() {
   return (
     <div className="App">
       <Welcome />
-      <Draw handleSubmit={handleSubmit} deck={deck} firstMeaning={firstMeaning}/>
+      <Draw handleSubmit={handleSubmit} deck={deck} />
       
       {/* <Reading /> */}
       {/* {
