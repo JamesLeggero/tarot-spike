@@ -30,7 +30,17 @@ body {
 .drawnCard {
   height: 250px;
   /* background-color: ghostwhite; */
-  filter: invert(75%);
+  /* filter: invert(75%); */
+  animation: cardFadeIn 10s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes cardFadeIn {
+  0% {filter: invert(0%)}
+  /* 25% {filter: invert(33%)}
+  50% {filter: invert(66%)} */
+  60% {filter: invert(100%)}
+  100% {filter: invert(80%)}
 }
 
 code {
