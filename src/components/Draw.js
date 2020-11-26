@@ -144,13 +144,13 @@ export default function Draw(props) {
         // Object.keys(props.deck).length > 0 && console.log(result)
         Object.keys(props.deck).length > 0 && console.log(result)
         }
-        {
+        {/* {
             tarot.map(card => {
                 return (
                     <img className='drawnCard' style={{height: '100px'}} src={card} alt={card} />
                 )
             })
-        }
+        } */}
         
         </>
     )
