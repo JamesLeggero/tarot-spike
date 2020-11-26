@@ -31,8 +31,8 @@ body {
   height: 250px;
   /* background-color: ghostwhite; */
   /* filter: invert(75%); */
-  animation: cardFadeIn 10s;
-  animation-fill-mode: forwards;
+  /* animation: cardFadeIn 10s;
+  animation-fill-mode: forwards; */
 }
 
 @keyframes cardFadeIn {

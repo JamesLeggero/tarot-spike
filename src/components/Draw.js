@@ -119,13 +119,22 @@ export default function Draw(props) {
         <div className='drawContainer'>
             
         {
-            props.deck.map(card => {
+            props.deck.map((card, i) => {
                 return (
-                    <div className='cardContainer' key={card.rank}>
+                    <div className='cardContainer' key={i}>
                         {
                             card.reversed === false ?
-                            <img className='drawnCard' src={tarot[card.rank]} alt={`${tarot[card.rank]}`} /> :
-                            <img className='drawnCard' style={{transform: 'rotate(0.5turn'}} src={tarot[card.rank]} alt={`${tarot[card.rank]}`} />
+                            <img className='drawnCard' style={{
+                                animation: 'cardFadeIn 10s', 
+                                animationFillMode: 'forwards',
+                                animationDelay: i + 5,
+                            }} src={tarot[card.rank]} alt={`${tarot[card.rank]}`} /> :
+                            <img className='drawnCard' style={{
+                                transform: 'rotate(0.5turn)',
+                                animation: 'cardFadeIn 10s', 
+                                animationFillMode: 'forwards',
+                                animationDelay: i,
+                            }} src={tarot[card.rank]} alt={`${tarot[card.rank]}`} />
                         }
                     </div>
                 )
