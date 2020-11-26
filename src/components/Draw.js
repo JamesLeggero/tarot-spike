@@ -53,6 +53,27 @@ export default function Draw(props) {
 
     // const [ deck ] = props.deck
 
+    let toBeAnalyzed = ''
+
+    props.deck.forEach(card => {
+        
+        card.fortune_telling.forEach(fortune => {
+            toBeAnalyzed += fortune + ' '
+        })
+
+        if (card.reversed === false) {
+            card.meanings.light.forEach(meaning => {
+                toBeAnalyzed += meaning + ' '
+            })
+        } else {
+            card.meanings.shadow.forEach(meaning => {
+                toBeAnalyzed += meaning + ' '
+            })
+        }
+        
+        
+    })
+
     let firstMeaning = '', secondMeaning = '', thirdMeaning = '', fortune = ''
     if (props.deck[0]) {
         fortune = props.deck[0].fortune_telling[Math.floor(Math.random() * props.deck[0].fortune_telling.length)]
@@ -83,7 +104,7 @@ export default function Draw(props) {
 
     let interpretation = new Sentiment()
     // const result = interpretation.analyze(firstMeaning).score + interpretation.analyze(secondMeaning).score + interpretation.analyze(thirdMeaning).score
-    const result = interpretation.analyze(allMeanings)
+    const result = interpretation.analyze(toBeAnalyzed)
         
 
    
@@ -120,6 +141,7 @@ export default function Draw(props) {
         <h4>{secondMeaning}</h4>
         <h4>{thirdMeaning}</h4>
         {
+        // Object.keys(props.deck).length > 0 && console.log(result)
         Object.keys(props.deck).length > 0 && console.log(result)
         }
         
